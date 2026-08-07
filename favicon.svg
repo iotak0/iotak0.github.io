@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <rect width="512" height="512" fill="#000000"/>
+  <!-- Outer Technical Square Grid -->
+  <rect x="32" y="32" width="448" height="448" rx="64" stroke="#ffffff" stroke-width="16" fill="none" opacity="0.2"/>
+  <!-- Geometric Sharp "I" and "O" Logo Icon -->
+  <path d="M 160 140 H 220 V 372 H 160 Z" fill="#ffffff"/>
+  <path d="M 270 140 H 352 C 375 140, 392 157, 392 180 V 332 C 392 355, 375 372, 352 372 H 270 C 247 372, 230 355, 230 332 V 180 C 230 157, 247 140, 270 140 Z M 284 194 V 318 H 338 V 194 Z" fill="#ffffff"/>
+</svg>

@@ -1,0 +1,67 @@
+/* Custom Typography Definitions matching D-DIN Industrials */
+@layer utilities {
+    .font-display {
+        font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    }
+}
+
+/* SpaceX Design Rules */
+body {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+/* SpaceX Ghost Pill Button Responsive Styling */
+.btn-spacex {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 9999px; /* Pill Shape */
+    padding: 14px 28px;
+    font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: 1.17px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+@media (min-width: 640px) {
+    .btn-spacex {
+        padding: 18px 36px;
+        font-size: 13px;
+    }
+}
+
+.btn-spacex:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Smooth Scrolling Offset */
+html {
+    scroll-behavior: smooth;
+}
+
+/* RTL Adjustments for Arabic */
+html[dir="rtl"] {
+    font-family: 'Tajawal', 'Inter', sans-serif;
+}
+
+html[dir="rtl"] #now-container {
+    border-left-width: 0px;
+    border-right-width: 2px;
+    padding-left: 0px;
+    padding-right: 1.25rem;
+}
+
+@media (min-width: 640px) {
+    html[dir="rtl"] #now-container {
+        padding-right: 2.5rem;
+    }
+}
