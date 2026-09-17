@@ -20,13 +20,12 @@ const translations = {
         "now-desc-3": "Open for freelance projects, technical contract work, and full-stack software development roles.",
         "projects-eyebrow": "PORTFOLIO",
         "projects-title": "FEATURED PROJECTS",
-        "m1-tag": "PROJECT 01 // MEDIA PLATFORM",
-        "m2-tag": "PROJECT 02 // STREAMING SERVICE",
-        "m3-tag": "PROJECT 03 // VISUAL RECOGNITION TOOL",
+        "m1-tag": "PROJECT 01 // STREAMING & TRACKING",
+        "m2-tag": "PROJECT 02 // STREAMING & TRACKING",
+        "m3-tag": "PROJECT 03 // SCENE SEARCH SYSTEM",
         "m4-tag": "PROJECT 04 // PRODUCTIVITY APP",
-        "animezilla-desc": "Automated media cataloging platform engineered for rapid search discovery, metadata tracking, and responsive UI.",
-        "tenshi-desc": "High-performance video streaming application designed for seamless media playback, real-time data fetching, and intuitive UX.",
-        "askmont-desc": "Anime scene identification tool. Instantly find anime titles, episode numbers, precise timestamps, and video previews from screenshots or URLs.",
+        "animezilla-desc": "All-in-one platform for streaming anime episodes, organizing watchlists, and receiving instant release notifications with cross-platform synchronization.",
+        "tenshi-desc": "Fast and easy anime streaming app to watch your favorite shows, manage your watchlist, and track your progress.",
         "5counts-desc": "Productivity utility designed for fast task tracking, interval counters, and high-efficiency personal workflow management.",
         "skills-eyebrow": "TECH STACK",
         "skills-title": "TECHNOLOGIES & TOOLS",
@@ -64,13 +63,12 @@ const translations = {
         "now-desc-3": "متاح حالياً للتعاقد على المشاريع البرمجية، الاستشارات التقنية، وتطوير التطبيقات.",
         "projects-eyebrow": "معرض الأعمال",
         "projects-title": "أبرز المشاريع",
-        "m1-tag": "مشروع 01 // منصة وسائط",
-        "m2-tag": "مشروع 02 // تطبيق بث واستعراض",
-        "m3-tag": "مشروع 03 // أداة التعرف البصري",
+        "m1-tag": "مشروع 01 // البث والتتبع",
+        "m2-tag": "مشروع 02 // البث والتتبع",
+        "m3-tag": "مشروع 03 // محرك البحث البصري",
         "m4-tag": "مشروع 04 // تطبيق إنتاجية",
-        "animezilla-desc": "منصة متكاملة لأرشفة واستكشاف بيانات الأنمي تم تصميمها للبحث السريع وعرض البيانات بكفاءة عالية.",
-        "tenshi-desc": "تطبيق بث وسائط عالي الأداء مصمم لتشغيل الفيديو بسلاسة، جلب البيانات اللحظية، وتقديم تجربة استخدام حديثة.",
-        "askmont-desc": "محرك البحث عن مشاهد الأنمي. يتعرف فورياً على اسم الأنمي، رقم الحلقة، التوقيت الدقيق بالثواني، ومعاينة المشهد عبر اللقطات أو الروابط.",
+        "animezilla-desc": "منصة متكاملة لمشاهدة حلقات الأنمي، تنظيم قوائم المتابعة، وتلقي إشعارات فورية عند صدور الحلقات مع مزامنة سحابية مرنة.",
+        "tenshi-desc": "تطبيق سريع وبسيط لمشاهدة أعمال الأنمي المفضلة لديك، تنظيم قائمتك، ومتابعة آخر الحلقات بسهولة.",
         "5counts-desc": "تطبيق إنتاجية مخصص لمتابعة المهام، التوقيت السريع، وإدارة وتنفيذ الأعمال الشخصية بكفاءة عالية.",
         "skills-eyebrow": "القدرات البرمجية",
         "skills-title": "التقنيات وأدوات التطوير",
@@ -114,6 +112,11 @@ function toggleLanguage() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const savedLang = localStorage.getItem('preferred_lang') || 'en';
-    setLanguage(savedLang);
+    const savedLang = localStorage.getItem('preferred_lang');
+    if (savedLang && (savedLang === 'ar' || savedLang === 'en')) {
+        setLanguage(savedLang);
+    } else {
+        const browserLang = (navigator.language || navigator.userLanguage || '').startsWith('ar') ? 'ar' : 'en';
+        setLanguage(browserLang);
+    }
 });

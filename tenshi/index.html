@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tenshi Stream — Anime Streaming & Tracking Hub</title>
+
+    <!-- Tenshi Stream Circular SVG Favicon -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><circle cx='256' cy='256' r='256' fill='%23000000'/><path d='M 235 385 C 190 320, 175 255, 230 190 C 275 140, 325 105, 360 85 C 335 140, 315 175, 345 160 C 315 205, 305 235, 335 220 C 305 265, 290 305, 315 315 C 285 355, 260 380, 235 385 Z' fill='none' stroke='%23ffffff' stroke-width='28' stroke-linecap='round' stroke-linejoin='round'/><path d='M 202 248 C 240 205, 280 180, 330 165' fill='none' stroke='%23ffffff' stroke-width='28' stroke-linecap='round'/><path d='M 215 305 C 250 265, 285 240, 322 225' fill='none' stroke='%23ffffff' stroke-width='28' stroke-linecap='round'/></svg>"
+    />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;600;700&family=Tajawal:wght@500;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- FontAwesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <style>
+      .font-display {
+        font-family: "Barlow Condensed", "Tajawal", sans-serif;
+      }
+      html[dir="rtl"] {
+        font-family: "Tajawal", sans-serif;
+      }
+      html[dir="ltr"] {
+        font-family: "Inter", sans-serif;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-black text-white antialiased selection:bg-white selection:text-black min-h-screen flex flex-col justify-between relative overflow-x-hidden"
+  >
+    <!-- Background Radial Pattern -->
+    <div
+      class="fixed inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-zinc-900/40 via-black to-black pointer-events-none z-0"
+    ></div>
+
+    <!-- Header / Navbar -->
+    <header
+      class="relative z-20 w-full px-6 sm:px-12 py-5 border-b border-zinc-900 flex justify-between items-center"
+    >
+      <!-- Brand Logo & Name in Header -->
+      <div class="flex items-center gap-3.5">
+        <div
+          class="w-10 h-10 bg-black border border-zinc-800 rounded-xl flex items-center justify-center text-white shadow-lg"
+        >
+          <svg
+            class="w-6 h-6"
+            viewBox="0 0 512 512"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="32"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M 235 385 C 190 320, 175 255, 230 190 C 275 140, 325 105, 360 85 C 335 140, 315 175, 345 160 C 315 205, 305 235, 335 220 C 305 265, 290 305, 315 315 C 285 355, 260 380, 235 385 Z"
+            />
+            <path d="M 202 248 C 240 205, 280 180, 330 165" />
+            <path d="M 215 305 C 250 265, 285 240, 322 225" />
+          </svg>
+        </div>
+        <span
+          class="font-display font-bold text-xl sm:text-2xl tracking-widest uppercase"
+          >TENSHI STREAM</span
+        >
+      </div>
+
+      <!-- Action Controls -->
+      <div class="flex items-center gap-3 sm:gap-4">
+        <!-- Developer Portfolio Button -->
+        <a
+          href="../"
+          id="btnDevPage"
+          class="border border-zinc-800 hover:border-white bg-zinc-900/40 hover:bg-white hover:text-black px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase transition-all duration-300 flex items-center gap-2 group"
+        >
+          <i
+            class="fa-solid fa-arrow-left text-[10px] group-hover:-translate-x-0.5 transition-transform rtl:rotate-180 rtl:group-hover:translate-x-0.5"
+          ></i>
+          <span>صفحة المطور</span>
+        </a>
+
+        <!-- Language Toggle Button -->
+        <button
+          onclick="toggleLang()"
+          id="langBtn"
+          class="border border-zinc-800 hover:border-white px-3.5 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase transition-all"
+        >
+          EN
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main
+      class="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-6 sm:px-12 py-16 max-w-4xl mx-auto"
+    >
+      <!-- Technical Protocol Badge -->
+      <span
+        id="badge"
+        class="border border-zinc-800 bg-zinc-900/50 text-zinc-400 text-[10px] sm:text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded-full mb-8"
+      >
+        بث وتتبع الأنمي • الإصدار الرسمي
+      </span>
+
+      <!-- Headline -->
+      <h1
+        id="headline"
+        class="font-display text-4xl sm:text-6xl md:text-7xl font-extrabold uppercase tracking-tight leading-[1.05] mb-6"
+      >
+        مشاهدة وتتبع الأنمي <br /><span class="text-zinc-500"
+          >في تجربة واحدة متكاملة</span
+        >
+      </h1>
+
+      <!-- Description -->
+      <p
+        id="desc"
+        class="text-zinc-400 text-sm sm:text-base md:text-lg max-w-2xl font-light leading-relaxed mb-10"
+      >
+        تطبيق مخصص لعشاق الأنمي لمشاهدة وتتبع تقدم الحلقات، تنظيم القوائم
+        المخصصة، ومتابعة آخر أخبار وتفاصيل الإنتاج عبر واجهة سريعة، بسيطة، وسهلة
+        الاستخدام.
+      </p>
+
+      <!-- Store Actions -->
+      <div
+        class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto"
+      >
+        <!-- Google Play Button -->
+        <!-- 
+        <a
+          href="https://play.google.com/store/apps/details?id=com.mont.tenshistream"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-full sm:w-auto min-w-[200px] border border-zinc-700 bg-transparent text-white hover:border-white px-6 py-4 rounded-full flex items-center justify-center gap-3 transition-all duration-300 font-display font-bold text-xs tracking-widest uppercase"
+        >
+          <i class="fa-brands fa-google-play text-base"></i>
+          <span id="btnPlay">جوجل بلاي</span>
+        </a>
+        -->
+
+        <!-- App Store Button -->
+        <a
+          href="https://apps.apple.com/app/id6755628666"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-full sm:w-auto min-w-[200px] border border-white bg-white text-black hover:bg-transparent hover:text-white px-6 py-4 rounded-full flex items-center justify-center gap-3 transition-all duration-300 font-display font-bold text-xs tracking-widest uppercase"
+        >
+          <i class="fa-brands fa-apple text-lg"></i>
+          <span id="btnAppStore">آب ستور</span>
+        </a>
+      </div>
+    </main>
+
+    <!-- Footer with Terms & Privacy Links -->
+    <footer
+      class="relative z-10 border-t border-zinc-900 py-6 px-6 sm:px-12 flex flex-col sm:flex-row justify-between items-center text-xs text-zinc-600 gap-4"
+    >
+      <p>© 2026 TENSHI STREAM. ALL RIGHTS RESERVED.</p>
+      <div class="flex items-center gap-6">
+        <a
+          href="privacy-policy.html"
+          class="hover:text-zinc-300 transition-colors"
+          id="linkPrivacy"
+          >سياسة الخصوصية</a
+        >
+        <a
+          href="terms-and-conditions.html"
+          class="hover:text-zinc-300 transition-colors"
+          id="linkTerms"
+          >الشروط والأحكام</a
+        >
+      </div>
+    </footer>
+
+    <!-- Translation Controller -->
+    <script>
+      let currentLang = "ar";
+      const content = {
+        ar: {
+          badge: "تطبيق بث الأنمي • الإصدار الرسمي",
+          headline:
+            'مشاهدة الأنمي المفضّل <br /><span class="text-zinc-500">بسهولة وسرعة فائقة</span>',
+          desc: "تطبيق بسيط ومريح لمشاهدة حلقات الأنمي بجودة عالية، تنظيم أعمالك المفضلة، ومتابعة تقدمك في المشاهدة دون أي تعقيد.",
+          btnPlay: "جوجل بلاي",
+          btnAppStore: "آب ستور",
+          btnDevPage: "صفحة المطور",
+          privacy: "سياسة الخصوصية",
+          terms: "الشروط والأحكام",
+          btn: "EN",
+        },
+        en: {
+          badge: "ANIME STREAMING APP • OFFICIAL RELEASE",
+          headline:
+            'WATCH YOUR FAVORITE ANIME <br /><span class="text-zinc-500">FAST & EFFORTLESS</span>',
+          desc: "Simple, user-friendly app to stream anime in high quality, organize your favorite titles, and follow your watchlist effortlessly.",
+          btnPlay: "GOOGLE PLAY",
+          btnAppStore: "APP STORE",
+          btnDevPage: "DEVELOPER",
+          privacy: "Privacy Policy",
+          terms: "Terms & Conditions",
+          btn: "AR",
+        },
+      };
+
+      function applyLanguage(lang) {
+        currentLang = lang;
+        document.documentElement.lang = lang;
+        document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+
+        const b = document.getElementById("badge");
+        if (b) b.innerHTML = content[lang].badge;
+
+        const h = document.getElementById("headline");
+        if (h) h.innerHTML = content[lang].headline;
+
+        const d = document.getElementById("desc");
+        if (d) d.innerHTML = content[lang].desc;
+
+        const playBtn = document.getElementById("btnPlay");
+        if (playBtn) playBtn.textContent = content[lang].btnPlay;
+
+        const appStoreBtn = document.getElementById("btnAppStore");
+        if (appStoreBtn) appStoreBtn.textContent = content[lang].btnAppStore;
+
+        const devSpan = document.querySelector("#btnDevPage span");
+        if (devSpan) devSpan.textContent = content[lang].btnDevPage;
+
+        const linkP = document.getElementById("linkPrivacy");
+        if (linkP) linkP.textContent = content[lang].privacy;
+
+        const linkT = document.getElementById("linkTerms");
+        if (linkT) linkT.textContent = content[lang].terms;
+
+        const langBtn = document.getElementById("langBtn");
+        if (langBtn) langBtn.textContent = content[lang].btn;
+
+        localStorage.setItem("preferred_lang", lang);
+      }
+
+      function toggleLang() {
+        const nextLang = currentLang === "ar" ? "en" : "ar";
+        applyLanguage(nextLang);
+      }
+
+      // Sync with localStorage or browser language upon opening
+      document.addEventListener("DOMContentLoaded", () => {
+        const savedLang = localStorage.getItem("preferred_lang");
+        if (savedLang && (savedLang === "ar" || savedLang === "en")) {
+          applyLanguage(savedLang);
+        } else {
+          const browserLang = (
+            navigator.language ||
+            navigator.userLanguage ||
+            ""
+          ).startsWith("ar")
+            ? "ar"
+            : "en";
+          applyLanguage(browserLang);
+        }
+      });
+    </script>
+  </body>
+</html>
